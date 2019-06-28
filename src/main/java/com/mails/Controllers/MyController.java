@@ -25,13 +25,13 @@ public class MyController {
         return "pages/login";
     }
 
-    @PostMapping("/loginrup")
+    @RequestMapping("/loginup")
     @ResponseBody
     public  void loginok(@RequestParam("callback")String callback, HttpServletResponse resp){
         System.out.println("进了");
+        PrintWriter pw = null;
         String str= JSON.toJSONString(true);
         resp.setContentType("text/json;charset=UTF-8");
-        PrintWriter pw = null;
         try {
             pw = resp.getWriter();
             pw.println();
