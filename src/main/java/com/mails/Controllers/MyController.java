@@ -15,7 +15,7 @@ public class MyController {
     @RequestMapping("/tologin")
     public String comminok(){
 
-        return "users/login";
+        return "pages/login";
     }
 
     @PostMapping("/loginrup")
