@@ -3,6 +3,7 @@ package com.mails.Controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 //主Controller请求
 @Controller
@@ -19,8 +20,10 @@ public class MyController {
     }
 
     @PostMapping("/loginrup")
-    public String loginok(){
-        return "redirect:toindex";
+    @ResponseBody
+    public boolean loginok(){
+        System.out.println("进了");
+        return true;
     }
 
     @RequestMapping("/toindex")

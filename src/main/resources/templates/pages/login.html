@@ -104,26 +104,26 @@
                                 <span class="input-group-addon">
                                     <i class="now-ui-icons users_circle-08"></i>
                                 </span>
-                                <input type="text" class="form-control" placeholder="First Name...">
+                                <input type="text" class="form-control" placeholder="账号" id="username"/>
                             </div>
                             <div class="input-group form-group-no-border input-lg">
                                 <span class="input-group-addon">
                                     <i class="now-ui-icons text_caps-small"></i>
                                 </span>
-                                <input type="text" placeholder="Last Name..." class="form-control" />
+                                <input type="text" class="form-control" placeholder="密码" id="password"/>
                             </div>
                         </div>
                         <div class="footer text-center">
-                            <a href="#pablo" class="btn btn-primary btn-round btn-lg btn-block">Get Started</a>
+                            <span class="btn btn-primary btn-round btn-lg btn-block" id="loginsub">登录<span/>
                         </div>
                         <div class="pull-left">
                             <h6>
-                                <a href="#pablo" class="link">Create Account</a>
+                                <a href="#pablo" class="link">账号注册</a>
                             </h6>
                         </div>
                         <div class="pull-right">
                             <h6>
-                                <a href="#pablo" class="link">Need Help?</a>
+                                <a href="#pablo" class="link">帮助</a>
                             </h6>
                         </div>
                     </form>
@@ -180,5 +180,43 @@
 <script src="assets/js/plugins/jquery.sharrre.js" type="text/javascript"></script>
 <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
 <script src="assets/js/now-ui-kit.js?v=1.1.0" type="text/javascript"></script>
+<script>
+    $(function(){
+        //获取主机地址
+        var path = window.location.host;
+        //截取，得到项目名称
+        var url =window.document.location.pathname;
+        var projectName = url.substring(0,url.substr(1).indexOf('/')+1);
+        url = "http://"+path+projectName;
 
+        $("#loginsub").click(function(){
+            alert(123);
+            if($("#username").val()==""){
+                alert("请输入登陆账号")
+            }else if($("#password").val()==""){
+                alert("请输入用户密码")
+            }else{
+                $.ajax({
+                    "url":url+"/loginup",
+                    "data":{
+                        "username":username,
+                        "password":password,
+                    },
+                    "type":"post",
+                    "dataType":"json",
+                    "success":function(result){
+                        if(result){
+                            alert("登陆成功");
+                        } else{
+                            alert("登录失败");
+                        }
+                    },
+                    "error":function(){
+                        alert("系统错误");
+                    }
+                });
+            }
+        });
+    })
+</script>
 </html>
