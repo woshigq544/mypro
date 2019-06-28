@@ -24,6 +24,6 @@ public class MyInterceptor implements WebMvcConfigurer {
         WebMvcConfigurer.super.addInterceptors(registry);
         registry.addInterceptor(new InterceptorAdaptor()).addPathPatterns("/**").excludePathPatterns(staticurl);//拦截请求
 
-        logger.info("Interceptor Loading。。。。。。。。。。。。。。");
+        logger.info("Interceptor Loading。。are you READY???。。。。。。。。。。。。");
     }
 }
