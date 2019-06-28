@@ -55,7 +55,7 @@ public class EmailsController {
         return "backok";
     }
 
-    @RequestMapping("/go")
+    @RequestMapping("/good")
     public String backManage(){
         return "go";
     }
