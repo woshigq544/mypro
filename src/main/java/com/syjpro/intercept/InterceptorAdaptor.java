@@ -1,4 +1,4 @@
-package com.mails.intercept;
+package com.syjpro.intercept;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 

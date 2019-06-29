@@ -1,4 +1,4 @@
-package com.mails.intercept;
+package com.syjpro.intercept;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.mails;
+package com.syjpro;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

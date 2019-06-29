@@ -1,4 +1,4 @@
-package com.mails.Controllers;
+package com.syjpro.Controllers;
 
 import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Controller;
@@ -27,18 +27,12 @@ public class MyController {
 
     @RequestMapping("/loginup")
     @ResponseBody
-    public  void loginok(@RequestParam("callback")String callback, HttpServletResponse resp){
+    public  String loginok( HttpServletResponse resp){
         System.out.println("进了");
         PrintWriter pw = null;
         String str= JSON.toJSONString(true);
         resp.setContentType("text/json;charset=UTF-8");
-        try {
-            pw = resp.getWriter();
-            pw.println();
-            pw.println(callback+"("+str+")");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return str;
     }
 
     @RequestMapping("/toindex")
