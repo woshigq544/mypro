@@ -55,4 +55,29 @@ public class MyController {
     public String toindex(){
         return "users/emailpage";
     }
+
+    @RequestMapping("/toregist")
+    public String toregiste(){
+        System.out.println("进来注册？？？");
+        return "pages/regist";
+    }
+
+    @RequestMapping("/register")
+    @ResponseBody
+    public  String sureregistuser(HttpServletRequest req, HttpServletResponse resp, Users user){
+        boolean bo = false;
+        System.out.println("注册用户"+user.getUsername());
+        user = userServiceImpl.toRegist(user);
+        if(user!=null){
+            System.out.println("账户已存在，注册失败");
+        }else{
+            System.out.println("账户可以注册");
+            int a = userServiceImpl.doingRegist(user);
+            bo=true;
+        }
+
+        String str= JSON.toJSONString(bo);
+        resp.setContentType("text/json;charset=UTF-8");
+        return str;
+    }
 }

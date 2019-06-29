@@ -102,21 +102,21 @@
                                 <span class="input-group-addon">
                                     <i class="now-ui-icons users_circle-08"></i>
                                 </span>
-                            <input type="text" class="form-control" placeholder="账号" id="username" autocomplete="off"/>
+                            <input type="text" class="form-control" placeholder="输入你要注册的账号" id="username" autocomplete="off"/>
                         </div>
                         <div class="input-group form-group-no-border input-lg">
                                 <span class="input-group-addon">
                                     <i class="now-ui-icons text_caps-small"></i>
                                 </span>
-                            <input type="password" class="form-control" placeholder="密码" id="password"/>
+                            <input type="password" class="form-control" placeholder="输入你的初始密码" id="password"/>
                         </div>
                     </div>
                     <div class="footer text-center">
-                            <span class="btn btn-primary btn-round btn-lg btn-block" id="loginsub">登录<span/>
+                            <span class="btn btn-primary btn-round btn-lg btn-block" id="registsub">提交注册<span/>
                     </div>
                     <div class="pull-left">
                         <h6>
-                            <a href="toregist" class="link">注册</a>
+                            <a href="login" class="link">返回登录</a>
                         </h6>
                     </div>
                     <div class="pull-right">
@@ -186,14 +186,15 @@
         var url =window.document.location.pathname;
         var projectName = url.substring(0,url.substr(1).indexOf('/')+1);
         url = "http://"+path+projectName;
-        $("#loginsub").click(function(){
+        $("#registsub").click(function(){
             if($("#username").val()==""){
-                alert("请输入登陆账号")
+                alert("注册账号不能为空")
             }else if($("#password").val()==""){
-                alert("请输入用户密码")
+                alert("注册密码不能为空")
             }else{
+                alert("注册用户名="+$("#username").val());
                 $.ajax({
-                    "url":"loginup",
+                    "url":"register",
                     "data":{
                         "username":$("#username").val(),
                         "password":$("#password").val(),
@@ -203,13 +204,14 @@
                     "dataType": "json",
                     "success":function(result){
                         if(result){
-                            window.location.href=url+'/toindex';
+                            alert("注册成功");
                         }else{
-                            window.location.href=url+'/login';
+                            alert("注册未能成功");
                         }
+                        window.location.href=url+'/login';
                     },
                     "error":function(){
-                        alert("登录出错");
+                        alert("系统出错，注册失败");
                     }
                 });
             }

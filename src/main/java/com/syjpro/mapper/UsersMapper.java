@@ -5,6 +5,8 @@ import com.syjpro.entity.Users;
 public interface UsersMapper {
     Users selectByLogin(Users user);
 
+    Users toRegist(Users user);
+
     int deleteByPrimaryKey(Integer userid);
 
     int insert(Users record);
@@ -16,4 +18,5 @@ public interface UsersMapper {
     int updateByPrimaryKeySelective(Users record);
 
     int updateByPrimaryKey(Users record);
+
 }
