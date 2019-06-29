@@ -2,6 +2,7 @@ package com.syjpro.Controllers;
 
 import com.alibaba.fastjson.JSON;
 import com.syjpro.entity.Users;
+import com.syjpro.finalthings.Finals;
 import com.syjpro.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +39,8 @@ public class MyController {
         if(user!=null){
             System.out.println("登录用户电话号码为："+user.getPhone());
             HttpSession hs = req.getSession();
-            hs.setAttribute("loginuser",user);
+            //用户登录信息验证通过后将登录用户信息存入session中
+            hs.setAttribute(Finals.LOGINUSER,user);
             bo = true;
         }else{
             System.out.println("登录失败");

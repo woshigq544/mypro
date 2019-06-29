@@ -1,6 +1,7 @@
 package com.syjpro.intercept;
 
 import com.syjpro.entity.Users;
+import com.syjpro.finalthings.Finals;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +19,7 @@ public class InterceptorAdaptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession hs = request.getSession();
-        Users user = (Users)hs.getAttribute("loginuser");
+        Users user = (Users)hs.getAttribute(Finals.LOGINUSER);
         boolean bo = false;
         if(user!=null){
             bo = true;
