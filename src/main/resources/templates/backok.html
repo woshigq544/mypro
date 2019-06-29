@@ -3,8 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
+    <script>
+        $(function(){
+            $("#cl").click(function(){
+                alert(123);
+                $.ajax({
+                    url: "loginup",
+                    context: document.body,
+                    success:function(){
+                        alert("ko");
+                    },
+                    error:function(){
+                        alert("EMMMMMMMMMMMMMMM");
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     backok！！！！！！！！
+    <input type="button" value="点击" id="cl"/>
 </body>
 </html>

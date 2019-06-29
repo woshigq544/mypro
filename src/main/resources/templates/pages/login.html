@@ -188,16 +188,19 @@
                 alert("请输入用户密码")
             }else{
                 $.ajax({
-                    url: "loginup",
-                    data:{
-                        "username":"123",
-                        "password":"123",
+                    "url":"/ajaxLogins",
+                    "data":{
+                        "username":"12",
+                        "password":"#!@@!",
+                        "val":false,
                     },
-                    success:function(){
-                        alert("登录验证通过，即将跳转");
+                    "type":"get",
+                    "dataType":"jsonp",
+                    "success":function(){
+                        alert("ADADASD");
                     },
-                    error:function(){
-                        alert("系统错误，登陆失败");
+                    "error":function(){
+                        alert("登录出错");
                     }
                 });
             }
