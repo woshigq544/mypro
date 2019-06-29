@@ -1,6 +1,5 @@
 package com.syjpro.entity;
 
-
 public class Users {
     private Integer userid;
 
@@ -28,11 +27,11 @@ public class Users {
         this.username = username == null ? null : username.trim();
     }
 
-    public String getAssword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setAssword(String password) {
+    public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
     }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.mapper.UsersMapper">
-  <resultMap id="BaseResultMap" type="com.example.demo.entity.Users">
+<mapper namespace="com.syjpro.mapper.UsersMapper">
+  <resultMap id="BaseResultMap" type="com.syjpro.entity.Users">
     <id column="userid" jdbcType="INTEGER" property="userid" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
@@ -21,13 +21,13 @@
     delete from usermsg
     where userid = #{userid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.example.demo.entity.Users">
+  <insert id="insert" parameterType="com.syjpro.entity.Users">
     insert into usermsg (userid, username, password, 
       phone, email)
     values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.demo.entity.Users">
+  <insert id="insertSelective" parameterType="com.syjpro.entity.Users">
     insert into usermsg
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userid != null">
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.entity.Users">
+  <update id="updateByPrimaryKeySelective" parameterType="com.syjpro.entity.Users">
     update usermsg
     <set>
       <if test="username != null">
@@ -82,7 +82,7 @@
     </set>
     where userid = #{userid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.Users">
+  <update id="updateByPrimaryKey" parameterType="com.syjpro.entity.Users">
     update usermsg
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
@@ -90,5 +90,4 @@
       email = #{email,jdbcType=VARCHAR}
     where userid = #{userid,jdbcType=INTEGER}
   </update>
-
 </mapper>
