@@ -12,7 +12,7 @@ public class UserServiceImpl implements UserService{
     private UsersMapper mapper;
 
     @Override
-    public int login(Users user) {
-        return 0;
+    public Users login(Users user) {
+        return mapper.selectByLogin(user);
     }
 }

@@ -3,6 +3,8 @@ package com.syjpro.mapper;
 import com.syjpro.entity.Users;
 
 public interface UsersMapper {
+    Users selectByLogin(Users user);
+
     int deleteByPrimaryKey(Integer userid);
 
     int insert(Users record);

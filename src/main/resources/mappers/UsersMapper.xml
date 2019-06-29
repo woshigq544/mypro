@@ -11,6 +11,14 @@
   <sql id="Base_Column_List">
     userid, username, password, phone, email
   </sql>
+
+  <select id="selectByLogin" parameterType="com.syjpro.entity.Users" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from usermsg
+    where username = #{username,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

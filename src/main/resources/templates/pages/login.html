@@ -190,14 +190,18 @@
                 $.ajax({
                     "url":"/loginup",
                     "data":{
-                        "username":"12",
-                        "password":"2312312",
+                        "username":$("#username").val(),
+                        "password":$("#password").val(),
                         "val":"NO",
                     },
                     "type":"post",
                     "dataType": "json",
-                    "success":function(){
-                        alert("ADADASD");
+                    "success":function(result){
+                        if(result){
+                            window.location.href='/toindex';
+                        }else{
+                            window.location.href='/login';
+                        }
                     },
                     "error":function(){
                         alert("登录出错");
