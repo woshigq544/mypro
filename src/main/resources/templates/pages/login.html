@@ -180,7 +180,12 @@
 <script src="assets/js/now-ui-kit.js?v=1.1.0" type="text/javascript"></script>
 <script>
     $(function(){
-
+//获取主机地址
+        var path = window.location.host;
+        //截取，得到项目名称
+        var url =window.document.location.pathname;
+        var projectName = url.substring(0,url.substr(1).indexOf('/')+1);
+        url = "http://"+path+projectName;
         $("#loginsub").click(function(){
             if($("#username").val()==""){
                 alert("请输入登陆账号")
@@ -188,7 +193,7 @@
                 alert("请输入用户密码")
             }else{
                 $.ajax({
-                    "url":"/loginup",
+                    "url":"loginup",
                     "data":{
                         "username":$("#username").val(),
                         "password":$("#password").val(),
@@ -198,9 +203,9 @@
                     "dataType": "json",
                     "success":function(result){
                         if(result){
-                            window.location.href='/toindex';
+                            window.location.href=url+'/toindex';
                         }else{
-                            window.location.href='/login';
+                            window.location.href=url+'/login';
                         }
                     },
                     "error":function(){
