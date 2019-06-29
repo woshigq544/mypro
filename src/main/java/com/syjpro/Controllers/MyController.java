@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 //主Controller请求
 @Controller
@@ -29,12 +31,14 @@ public class MyController {
 
     @RequestMapping("/loginup")
     @ResponseBody
-    public  String loginok(HttpServletResponse resp, Users user){
+    public  String loginok(HttpServletRequest req, HttpServletResponse resp, Users user){
         boolean bo = false;
         System.out.println("登录用户"+user.getUsername());
         user = userServiceImpl.login(user);
         if(user!=null){
             System.out.println("登录用户电话号码为："+user.getPhone());
+            HttpSession hs = req.getSession();
+            hs.setAttribute("loginuser",user);
             bo = true;
         }else{
             System.out.println("登录失败");

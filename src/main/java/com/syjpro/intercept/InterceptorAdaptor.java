@@ -1,9 +1,11 @@
 package com.syjpro.intercept;
 
+import com.syjpro.entity.Users;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class InterceptorAdaptor extends HandlerInterceptorAdapter {
     /**
@@ -15,8 +17,14 @@ public class InterceptorAdaptor extends HandlerInterceptorAdapter {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-
-
-        return true;
+        HttpSession hs = request.getSession();
+        Users user = (Users)hs.getAttribute("loginuser");
+        boolean bo = false;
+        if(user!=null){
+            bo = true;
+        }else{
+            response.sendRedirect("/login");
+        }
+        return bo;
     }
 }

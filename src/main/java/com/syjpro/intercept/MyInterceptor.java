@@ -10,7 +10,7 @@ public class MyInterceptor implements WebMvcConfigurer {
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(MyInterceptor.class);
 
     /** 配置需要放过拦截的请求路径，如登录请求，静态资源等 */
-    private String[] staticurl = {"/login","/tologin"};
+    private String[] staticurl = {"/login","/tologin","/assets/**","/loginup"};
 
     /**
      * @auther: gq
