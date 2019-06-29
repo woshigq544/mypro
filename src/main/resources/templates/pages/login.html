@@ -188,14 +188,14 @@
                 alert("请输入用户密码")
             }else{
                 $.ajax({
-                    "url":"/ajaxLogins",
+                    "url":"/loginup",
                     "data":{
                         "username":"12",
                         "password":"#!@@!",
-                        "val":false,
+                        "val":"NO",
                     },
                     "type":"get",
-                    "dataType":"jsonp",
+                    "dataType": "jsonp",
                     "success":function(){
                         alert("ADADASD");
                     },

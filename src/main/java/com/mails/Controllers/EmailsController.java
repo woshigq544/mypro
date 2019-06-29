@@ -42,7 +42,7 @@ public class EmailsController {
                 MimeMessageHelper helper = new MimeMessageHelper(mimeMessage,true);
                 helper.setSubject("密码找回邮件");
                 //邮件内容设置
-                helper.setText("<b style='color:red'>找回密码链接为：</b><a href='http://www.4399.comm'>小游戏</a>，该邮件30分钟内有效，请尽快处理！",true);
+                helper.setText("<b style='color:red'>找回密码链接为：</b><a href='http://www.4399.com'>小游戏</a>，该邮件30分钟内有效，请尽快处理！",true);
                 //邮件发送的目的地
                 helper.setTo("544279513@qq.com");
                 //邮箱平台，企业邮箱，个人邮箱
