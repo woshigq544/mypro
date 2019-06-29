@@ -1,6 +1,7 @@
 package com.syjpro.Controllers;
 
 import com.alibaba.fastjson.JSON;
+import com.syjpro.entity.Users;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +28,8 @@ public class MyController {
 
     @RequestMapping("/loginup")
     @ResponseBody
-    public  String loginok( HttpServletResponse resp){
-        System.out.println("进了");
+    public  String loginok(HttpServletResponse resp, Users user){
+        System.out.println(user);
         PrintWriter pw = null;
         String str= JSON.toJSONString(true);
         resp.setContentType("text/json;charset=UTF-8");
