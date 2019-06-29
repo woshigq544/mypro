@@ -26,7 +26,7 @@ public class MyController {
     @RequestMapping("/tologin")
     public String comminok(){
 
-        return "pages/login";
+        return "index";
     }
 
     @RequestMapping("/loginup")
@@ -51,6 +51,6 @@ public class MyController {
 
     @RequestMapping("/toindex")
     public String toindex(){
-        return "users/index";
+        return "users/emailpage";
     }
 }

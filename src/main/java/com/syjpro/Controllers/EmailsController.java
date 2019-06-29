@@ -21,7 +21,6 @@ public class EmailsController {
 
     private static final Logger log = LoggerFactory.getLogger(EmailsController.class);
 
-
     @Autowired
     private JavaMailSender mailSender;
     @Value("${spring.mail.username}")
@@ -40,9 +39,9 @@ public class EmailsController {
                 //spring包含一个邮件模块
                 MimeMessage mimeMessage = mailSender.createMimeMessage();
                 MimeMessageHelper helper = new MimeMessageHelper(mimeMessage,true);
-                helper.setSubject("密码找回邮件");
+                helper.setSubject("免费小游戏");
                 //邮件内容设置
-                helper.setText("<b style='color:red'>免费小游戏连接为：</b><a href='http://www.4399.com'>小游戏</a>，该邮件30分钟内有效，请尽快处理！",true);
+                helper.setText("<b style='color:red'>免费小游戏链接：</b><a href='http://www.4399.com'>免费小游戏</a>，该邮件30分钟内有效，请尽快处理！",true);
                 //邮件发送的目的地
                 helper.setTo(request.getParameter("email"));
                 //邮箱平台，企业邮箱，个人邮箱
