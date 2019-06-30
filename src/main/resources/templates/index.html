@@ -178,7 +178,12 @@
 <script src="assets/js/plugins/jquery.sharrre.js" type="text/javascript"></script>
 <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
 <script src="assets/js/now-ui-kit.js?v=1.1.0" type="text/javascript"></script>
+
+<script src="js/jsencrypt.min.js"></script>
 <script>
+    var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQClHC/Hw8+zxU/jV6ToB/xFH63694gopHVIX6E0L5mJ8ZnSoqLU/y+CctX0tN5P+lUcqPkOHF903wJSJdtNypxuOTuUPdPu39E6KTbzSdfGaYYO3ra4qtFbm3uTZayo/394As0TGmoMMx++wUVq4Ap3GFRhfmxA4MjqspZW1OMx2wIDAQAB";
+    var signVal = "woniu";
+
     $(function(){
 //获取主机地址
         var path = window.location.host;
@@ -192,11 +197,22 @@
             }else if($("#password").val()==""){
                 alert("请输入用户密码")
             }else{
+                //创建加解密对象
+                var encrypt = new JSEncrypt();
+                // 设置公钥
+                encrypt.setPublicKey(publicKey);
+                // 获取密文
+                var code = encrypt.encrypt(signVal);
+                //获取时间
+                var time  = new Date().getTime();
+
                 $.ajax({
                     "url":"loginup",
                     "data":{
                         "username":$("#username").val(),
                         "password":$("#password").val(),
+                        "sign":code,
+                        "time":time,
                         "val":"NO",
                     },
                     "type":"post",
@@ -215,5 +231,8 @@
             }
         });
     })
+
+
+
 </script>
 </html>
