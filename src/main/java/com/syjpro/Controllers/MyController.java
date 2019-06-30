@@ -62,17 +62,18 @@ public class MyController {
         return "pages/regist";
     }
 
-    @RequestMapping("/register")
+    @RequestMapping("/registup")
     @ResponseBody
     public  String sureregistuser(HttpServletRequest req, HttpServletResponse resp, Users user){
         boolean bo = false;
         System.out.println("注册用户"+user.getUsername());
-        user = userServiceImpl.toRegist(user);
-        if(user!=null){
+        Users usershow = userServiceImpl.toRegist(user);
+        if(usershow!=null){
             System.out.println("账户已存在，注册失败");
         }else{
             System.out.println("账户可以注册");
             int a = userServiceImpl.doingRegist(user);
+            System.out.println("注册完毕");
             bo=true;
         }
 

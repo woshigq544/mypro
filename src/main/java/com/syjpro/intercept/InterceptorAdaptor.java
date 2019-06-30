@@ -24,6 +24,10 @@ public class InterceptorAdaptor extends HandlerInterceptorAdapter {
         if(user!=null){
             bo = true;
         }else{
+            String path = request.getContextPath();
+            //getScheme()获取http协议
+            String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+            System.out.println("请求"+basePath+"被拦截");
             response.sendRedirect("/login");
         }
         return bo;
