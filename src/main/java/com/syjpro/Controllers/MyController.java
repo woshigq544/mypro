@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.syjpro.entity.Users;
 import com.syjpro.finalthings.Finals;
 import com.syjpro.services.UserService;
+import com.syjpro.util.TimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 
 //主Controller请求
 @Controller
@@ -37,10 +39,10 @@ public class MyController {
     @ResponseBody
     public  String loginok(HttpServletRequest req, HttpServletResponse resp, Users user){
         boolean bo = false;
-        System.out.println("登录用户"+user.getUsername());
         user = userServiceImpl.login(user);
         if(user!=null){
             log.info("登录信息验证通过。。。。即将跳转。。。。");
+            System.out.println("登录用户"+user.getUsername()+"  注册时间为 ： "+TimeUtil.getTime(user.getCreatetime()));
             HttpSession hs = req.getSession();
             //用户登录信息验证通过后将登录用户信息存入session中
             hs.setAttribute(Finals.LOGINUSER,user);
@@ -77,6 +79,7 @@ public class MyController {
             System.out.println("账户已存在，注册失败");
         }else{
             System.out.println("账户可以注册");
+            user.setCreatetime(new Date());
             int a = userServiceImpl.doingRegist(user);
             System.out.println("注册完毕");
             bo=true;

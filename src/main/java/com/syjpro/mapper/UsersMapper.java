@@ -5,9 +5,9 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface UsersMapper {
-    Users selectByLogin(Users user);
+    Users selectByLogin(Users record);
 
-    Users toRegist(Users user);
+    Users toRegist(Users record);
 
     int deleteByPrimaryKey(Integer userid);
 
@@ -20,5 +20,4 @@ public interface UsersMapper {
     int updateByPrimaryKeySelective(Users record);
 
     int updateByPrimaryKey(Users record);
-
 }

@@ -16,8 +16,10 @@ public class UserServiceImpl implements UserService{
         return mapper.selectByLogin(user);
     }
 
+    //检查注册用户信息是否已存在
     @Override
     public Users toRegist(Users user) {
+
         return mapper.toRegist(user);
     }
 
