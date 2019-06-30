@@ -1,7 +1,9 @@
 package com.syjpro.mapper;
 
 import com.syjpro.entity.Users;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface UsersMapper {
     Users selectByLogin(Users user);
 

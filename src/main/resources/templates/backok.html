@@ -7,15 +7,14 @@
     <script>
         $(function(){
             $("#cl").click(function(){
-                alert(123);
                 $.ajax({
                     url: "loginup",
                     context: document.body,
                     success:function(){
-                        alert("ko");
+                        alert("已发送成功，登录邮箱点击链接进入");
                     },
                     error:function(){
-                        alert("EMMMMMMMMMMMMMMM");
+                        alert("系统错误。。。。");
                     }
                 });
             });
@@ -23,7 +22,7 @@
     </script>
 </head>
 <body>
-    backok！！！！！！！！
+    邮件发送成功~~~
     <input type="button" value="点击" id="cl"/>
 </body>
 </html>

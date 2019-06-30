@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.syjpro.entity.Users;
 import com.syjpro.finalthings.Finals;
 import com.syjpro.services.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpSession;
 //主Controller请求
 @Controller
 public class MyController {
+    private static final Logger log = LoggerFactory.getLogger(MyController.class);
     @Resource
     private UserService userServiceImpl;
 
@@ -37,13 +40,13 @@ public class MyController {
         System.out.println("登录用户"+user.getUsername());
         user = userServiceImpl.login(user);
         if(user!=null){
-            System.out.println("登录用户电话号码为："+user.getPhone());
+            log.info("登录信息验证通过。。。。即将跳转。。。。");
             HttpSession hs = req.getSession();
             //用户登录信息验证通过后将登录用户信息存入session中
             hs.setAttribute(Finals.LOGINUSER,user);
             bo = true;
         }else{
-            System.out.println("登录失败");
+            log.info("登录信息验证失败，重返登录界面。。。");
         }
 
         String str= JSON.toJSONString(bo);
@@ -67,7 +70,9 @@ public class MyController {
     public  String sureregistuser(HttpServletRequest req, HttpServletResponse resp, Users user){
         boolean bo = false;
         System.out.println("注册用户"+user.getUsername());
+
         Users usershow = userServiceImpl.toRegist(user);
+
         if(usershow!=null){
             System.out.println("账户已存在，注册失败");
         }else{
