@@ -9,22 +9,22 @@ import javax.annotation.Resource;
 @Service
 public class UserServiceImpl implements UserService{
     @Resource
-    private UsersMapper mapper;
+    private UsersMapper usersMapper;
 
     @Override
     public Users login(Users user) {
-        return mapper.selectByLogin(user);
+        return usersMapper.selectByLogin(user);
     }
 
     //检查注册用户信息是否已存在
     @Override
     public Users toRegist(Users user) {
 
-        return mapper.toRegist(user);
+        return usersMapper.toRegist(user);
     }
 
     @Override
     public int doingRegist(Users user) {
-        return mapper.insertSelective(user);
+        return usersMapper.insertSelective(user);
     }
 }
