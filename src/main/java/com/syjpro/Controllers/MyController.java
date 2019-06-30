@@ -6,7 +6,6 @@ import com.syjpro.finalthings.Finals;
 import com.syjpro.services.UserService;
 import com.syjpro.util.SecurityUtils;
 import com.syjpro.util.TestSign;
-import com.syjpro.util.TimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -75,7 +74,7 @@ public class MyController {
 
     @RequestMapping("/toregist")
     public String toregiste(){
-        System.out.println("进来注册？？？");
+        log.info("注册请求转发中...");
         return "pages/regist";
     }
 
@@ -88,16 +87,16 @@ public class MyController {
         Users usershow = userServiceImpl.toRegist(user);
 
         if(usershow!=null){
-            System.out.println("账户已存在，注册失败");
+            log.info("账户已存在，注册失败");
         }else{
             log.info("注册信息验证通过。。。。。。。");
             //注册户信息验证之后验证签名认证
             if(TestSign.signshowvalues(sign,time)){
-                System.out.println("账户可以注册");
+                log.info("账户可以注册");
                 user.setCreatetime(new Date());
                 user.setPassword(SecurityUtils.encodeMD5(user.getPassword()));
                 int a = userServiceImpl.doingRegist(user);
-                System.out.println("注册完毕");
+                log.info("注册完毕");
                 bo=true;
             }else{
                 log.info("注册请求证失败失败，重返登录界面。。。");

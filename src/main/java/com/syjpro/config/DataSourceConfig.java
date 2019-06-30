@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
 
+/*
 //配置C3P0连接池
 @Configuration
 public class DataSourceConfig {
@@ -18,3 +19,4 @@ public class DataSourceConfig {
         return DataSourceBuilder.create().type(com.mchange.v2.c3p0.ComboPooledDataSource.class).build();
     }
 }
+*/

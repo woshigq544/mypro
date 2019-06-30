@@ -11,8 +11,9 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
 import java.io.IOException;
+/*
 
-/*@Configuration
+@Configuration
 @MapperScan(basePackages = {"com.syjpro.mapper"})
 public class MybatisConfig {
 

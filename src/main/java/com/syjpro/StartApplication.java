@@ -10,9 +10,9 @@ import javax.sql.DataSource;
 @SpringBootApplication
 public class StartApplication {
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(StartApplication.class, args);
-        DataSource dataSource = context.getBean(DataSource.class);
+        /*ConfigurableApplicationContext context = */SpringApplication.run(StartApplication.class, args);
+        /*DataSource dataSource = context.getBean(DataSource.class);
 
-        System.out.println(dataSource.getClass());
+        System.out.println(dataSource.getClass());*/
     }
 }
