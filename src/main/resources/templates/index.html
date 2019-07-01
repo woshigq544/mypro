@@ -102,13 +102,11 @@
                                 <span class="input-group-addon">
                                     <i class="now-ui-icons users_circle-08"></i>
                                 </span>
-                            <input type="text" class="form-control" placeholder="账号" id="username" autocomplete="off"/>
                         </div>
                         <div class="input-group form-group-no-border input-lg">
                                 <span class="input-group-addon">
                                     <i class="now-ui-icons text_caps-small"></i>
                                 </span>
-                            <input type="password" class="form-control" placeholder="密码" id="password"/>
                         </div>
                     </div>
                     <div class="footer text-center">
@@ -192,43 +190,7 @@
         var projectName = url.substring(0,url.substr(1).indexOf('/')+1);
         url = "http://"+path+projectName;
         $("#loginsub").click(function(){
-            if($("#username").val()==""){
-                alert("请输入登陆账号")
-            }else if($("#password").val()==""){
-                alert("请输入用户密码")
-            }else{
-                //创建加解密对象
-                var encrypt = new JSEncrypt();
-                // 设置公钥
-                encrypt.setPublicKey(publicKey);
-                // 获取密文
-                var code = encrypt.encrypt(signVal);
-                //获取时间
-                var time  = new Date().getTime();
-
-                $.ajax({
-                    "url":"loginup",
-                    "data":{
-                        "username":$("#username").val(),
-                        "password":$("#password").val(),
-                        "sign":code,
-                        "time":time,
-                        "val":"NO",
-                    },
-                    "type":"post",
-                    "dataType": "json",
-                    "success":function(result){
-                        if(result){
-                            window.location.href=url+'/toindex';
-                        }else{
-                            window.location.href=url+'/login';
-                        }
-                    },
-                    "error":function(){
-                        alert("登录出错");
-                    }
-                });
-            }
+            window.location.href=url+'/login';
         });
     })
 

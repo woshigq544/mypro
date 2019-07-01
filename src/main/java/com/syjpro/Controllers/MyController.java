@@ -32,10 +32,11 @@ public class MyController {
 
         return "redirect:tologin";
     }
+
     @RequestMapping("/tologin")
     public String comminok(){
 
-        return "index";
+        return "pages/login";
     }
 
     @RequestMapping("/loginup")
@@ -107,4 +108,6 @@ public class MyController {
         resp.setContentType("text/json;charset=UTF-8");
         return str;
     }
+
+
 }

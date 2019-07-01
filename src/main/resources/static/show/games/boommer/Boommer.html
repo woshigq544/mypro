@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>经典扫雷</title>
+<script type="text/javascript" src = "./jquery-3.3.1.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//雷的个数
+		//var blong = prompt("请输入排雷数量");
+		$(document).on("contextmenu",function(){return false})
+		var textboom = 0;
+		var index = [];
+		var b = [];
+		var nu = 1;
+		var boomclick = 0;
+		var boomis = false;
+		var hit = 0;
+		var timer = 0;
+		b[0] = parseInt(Math.random()*100);
+		for(var i = 1 ; i < 10 ; i++){
+			var a = parseInt(Math.random()*100);
+			var c = false;
+			for(var j = 0 ; j < b.length ; j++){
+				if(b[j] == a){
+					c = true;
+					i--;
+					break;
+				}
+			}
+			if(c == false){
+				b[i] = a;
+			}
+		}
+		for(var i = 0 ; i <b.length-1; i++){
+			for(var j = 0 ; j < b.length-1-i ; j++){
+				if(b[j] > b[j+1]){
+					var t;
+					t = b[j];
+					b[j] = b[j+1];
+					b[j+1] = t;
+				}
+			}
+		}
+		var num = 0;
+		for(var i = 0 ; i < 100 ; i++){
+			$(".com").append($("<div class = 'beau normal' value = 'false' count = 'f'></div>"));
+			if(i == b[num] && num < 10){
+				num++;
+				index[num-1] = i;
+			}
+		}
+		//jQuery鼠标左击、右击事件
+		$(".beau").mousedown(function(e){ 
+			if(e.which == 3){ 
+		  		//if(($(this).attr("value")) == false){
+		  			if($(this).attr("value") != "true"){
+		  				if($(this).attr("count") != "t"){
+			   				$(this).attr("class","beau flags");
+			   				$(this).attr("count","t") ;
+			   			}else{
+			   				$(this).attr("class","beau normal");
+			   				$(this).attr("count","f") ;
+			   			}
+		  			}
+			    //}
+			}else if(e.which == 1){ 
+				if($(this).attr("value") != "true"){
+					$(this).attr("value","true");
+					var ind = $(".beau").index($(this));
+					for(var i = 0 ; i < index.length ; i++){
+						if( ind != index[i]){
+							$(this).attr("class","beau licker");
+						}else{
+							$(this).attr("class","beau disnormal");
+							boomis = true;
+							boomclick = ind;
+							break;
+						}
+					}
+					if(boomis == true){
+						if(textboom == 0){
+							alert("恭喜你中奖了！Boom！！！！");
+							textboom = 10;
+						}else{
+							alert("游戏已结束请刷新重新开始");
+						}
+						for(var i = 0 ; i < 100 ; i++){
+							$(".beau").eq(i).attr("value","true");
+							if(boomclick != i){
+								$(".beau").eq(i).attr("class","beau otherse");
+							}
+						}
+						for(var j = 0 ; j <index.length; j++){
+							for(var i = 0 ; i < 100 ; i++){
+								if(i == index[j] && boomclick != i){
+									$(".beau").eq(i).attr("class","beau boomm");
+									break;
+								}
+							}
+						}
+					}else{
+						for(var i = 0 ; i < b.length; i++){
+							var nn = $(".beau").index($(this));
+							var ss = b[i] - nn;
+							if(nn%10 == 0){
+								if((ss > -11 && ss <= -9)||(ss > -1 && ss <= 1)||(ss > 9 && ss <= 11)){
+									timer ++;
+								}
+							}else if((nn+1)%10 == 0){
+								if((ss >= -11 && ss < -9)||(ss >= -1 && ss < 1)||(ss >= 9 && ss < 11)){
+									timer ++;
+								}
+							}else{
+								if((ss >= -11 && ss <= -9)||(ss >= -1 && ss <= 1)||(ss >= 9 && ss <= 11)){
+									timer ++;
+								}
+							}
+						}
+						if(timer != 0){
+							$(this).text(timer);
+						}	
+						timer = 0;
+					}
+			  	}
+			}
+		})
+	});
+</script>
+<style type="text/css">
+	.com{
+		border : 1px black solid;
+		width : 500px;
+		height : 500px;
+		margin : auto;
+	}
+	.beau{
+		border : 1px black solid;
+		width : 9.6%;
+		height : 9.6%;
+		float : left;
+		line-height: 45px;/*让黄色div中的文字内容垂直居中*/
+        text-align: center;/*让文字水平居中*/
+	}.licker{
+		background-image : url('./mCell.png');
+		background-size : 100% 100%;
+	}
+	.normal{
+		background-image : url('./unCell.png');
+		background-size : 100% 100%;
+	}
+	.disnormal{
+		background-image : url('./mine.png');
+		background-size : 100% 100%;
+	}
+	.boomm{
+		background-image : url('./bomb.png');
+		background-size : 100% 100%;
+	}
+	.otherse{
+		background-image : url('./blank.png');
+		background-size : 100% 100%;
+	}
+	.flags{
+		background-image : url('./flag.png');
+		background-size : 100% 100%;
+	}
+</style>
+
+</head>
+<body>
+	<div class = "com"></div>
+
+<input type="button" value="按钮" id="clk"/>
+<script>
+	$(function(){
+		$(clk).click(function(){
+			window.location.href = "https://www.cnblogs.com/";
+		});
+	});
+</script>
+</body>
+</html>

@@ -12,6 +12,7 @@ import java.util.Base64;
  * @author waver
  */
 public class RSACodeUtil {
+
 	/**加解密方式*/
 	private static final String ENCRYPT = "RSA";
 	/**密钥长度默认1024位。 密钥长度必须是64的整数倍，范围在512~1024之间*/

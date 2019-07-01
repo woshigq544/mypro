@@ -12,7 +12,7 @@ public class TestSign {
             throws IOException, ServletException {
             boolean bo = false;
             if( sign == null ){//签名验证
-                System.out.println("滚!");
+                System.out.println("签名验证失败！！请求被拒绝~~");
             }else{
                 //获取前端发起请求时间(传过来的是总毫秒值)
                 Long thetime = Long.parseLong(signtime);
@@ -23,21 +23,23 @@ public class TestSign {
                 Long timeover = tm-thetime;
                 if(timeover > 10000){//设定当响应时间超过10秒，则验证失败（时间戳验证）
                     System.out.println("超时!");
+                }else{
+                    try {
+                        System.out.println("操作sign");
+                        System.out.println("操作中的sign="+sign);
+                        String pageSign = RSACodeUtil.decoder2PrivateKey(sign, Constance.PRIVATEKEYSTR);//方法私钥解密
+                        // 时间戳判断不写了。。。
+                        if( !Constance.SIGNVAL.equals(pageSign) ){
+                            System.out.println("无法解析！");
+                        }
+                        System.out.println("签名验证成功++++");
+                        // 签名验证成功!
+                        bo = true;
+                    } catch (Exception e) {
+                        System.out.println("无法解析，报错~~~！");
+                        bo = false;
+                    }
                 }
-            }
-            try {
-                System.out.println("操作sign");
-                String pageSign = RSACodeUtil.decoder2PrivateKey(sign, Constance.PRIVATEKEYSTR);//方法私钥解密
-                // 时间戳判断不写了。。。
-                if( !Constance.SIGNVAL.equals(pageSign) ){
-                    System.out.println("无法解析！");
-                }
-                System.out.println("签名验证成功++++");
-                // 签名验证成功!
-                bo = true;
-            } catch (Exception e) {
-                System.out.println("无法解析，报错~~~！");
-                bo = false;
             }
             return bo;
     }
