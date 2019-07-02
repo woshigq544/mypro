@@ -42,11 +42,7 @@ public class InterceptorAdaptor extends HandlerInterceptorAdapter {
                 bo = true;
             }
             if(!bo){
-                String jump = "tologin";
-                if("".equals(path)){
-                    jump = "/"+jump;
-                }
-                response.sendRedirect(basePath+jump);
+                response.sendRedirect(basePath+"tologin");
             }
 
             /*System.out.println("getRequestURL方法返回客户端发出请求时的完整URL"+request.getRequestURL());

@@ -5,6 +5,6 @@ public class Constance {
 	
 	public static final String PUBLICKEYSTR = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQClHC/Hw8+zxU/jV6ToB/xFH63694gopHVIX6E0L5mJ8ZnSoqLU/y+CctX0tN5P+lUcqPkOHF903wJSJdtNypxuOTuUPdPu39E6KTbzSdfGaYYO3ra4qtFbm3uTZayo/394As0TGmoMMx++wUVq4Ap3GFRhfmxA4MjqspZW1OMx2wIDAQAB";
 
-	public static final String SIGNVAL = "woniu";
+	public static final String SIGNVAL = "test";
 
 }

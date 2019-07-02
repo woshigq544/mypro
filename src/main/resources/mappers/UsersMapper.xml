@@ -44,6 +44,11 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="com.syjpro.entity.Users">
+    <!--<insert id="insertSelective" parameterType="com.syjpro.entity.Users" useGeneratedKeys="true" keyColumn="userid" keyProperty="userid">-->
+    <selectKey  keyProperty='userid' resultType='java.lang.Integer' order='AFTER'  >
+      select LAST_INSERT_ID() AS id
+    </selectKey>
+
     insert into usermsg
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userid != null">

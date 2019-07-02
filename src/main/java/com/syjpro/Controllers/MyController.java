@@ -97,7 +97,8 @@ public class MyController {
                 user.setCreatetime(new Date());
                 user.setPassword(SecurityUtils.encodeMD5(user.getPassword()));
                 int a = userServiceImpl.doingRegist(user);
-                log.info("注册完毕");
+                log.info("注册完毕,注册用户id为 ： "+user.getUserid());
+
                 bo=true;
             }else{
                 log.info("注册请求证失败失败，重返登录界面。。。");

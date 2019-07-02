@@ -1,5 +1,22 @@
 input 标签 禁用浏览器自带输入记录下拉框 autocomplete="off"
 
-
-
 逆向工程代码 mybatis-generator:generate -e
+
+配置idea里面springboot项目启动时输入的根路径名
+    #配置端口
+    server.port=8080
+    #配置访问的根目录
+    server.servlet.context-path=/mypro
+
+Mybatis数据回显：
+01.
+   <insert id="saveUser" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        插入数据代码
+    </insert>
+
+02.
+    <insert id="insertSelective" parameterType="com.syjpro.entity.Users">
+     <selectKey  keyProperty='userid' resultType='java.lang.Integer' order='AFTER'  >
+          select LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
