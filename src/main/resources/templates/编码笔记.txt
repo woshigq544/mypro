@@ -20,3 +20,7 @@ Mybatis数据回显：
           select LAST_INSERT_ID() AS id
         </selectKey>
     </insert>
+
+
+linux 查看日志
+tail -f catalina.out
