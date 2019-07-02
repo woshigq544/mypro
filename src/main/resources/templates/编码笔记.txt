@@ -5,7 +5,7 @@ input 标签 禁用浏览器自带输入记录下拉框 autocomplete="off"
 配置idea里面springboot项目启动时输入的根路径名
     #配置端口
     server.port=8080
-    #配置访问的根目录
+    #配置访问的根目录(项目名)
     server.servlet.context-path=/mypro
 
 Mybatis数据回显：
