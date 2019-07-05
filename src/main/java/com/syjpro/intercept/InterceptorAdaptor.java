@@ -53,8 +53,7 @@ public class InterceptorAdaptor extends HandlerInterceptorAdapter {
             System.out.println("getRemotePort方法返回客户机所使用的网络端口号"+request.getRemotePort());
             System.out.println("getLocalAddr方法返回WEB服务器的IP地址"+request.getLocalAddr());
             System.out.println("getLocalName方法返回WEB服务器的主机名"+request.getLocalName());*/
-
-
+            
         }
         return bo;
     }
